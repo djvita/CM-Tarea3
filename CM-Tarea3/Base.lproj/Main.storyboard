@@ -7,7 +7,7 @@
         <!--Start-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController id="vXZ-lx-hvc" customClass="Start" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Start" id="vXZ-lx-hvc" customClass="Start" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -46,10 +46,10 @@
             </objects>
             <point key="canvasLocation" x="162" y="330"/>
         </scene>
-        <!--View Controller-->
+        <!--Add Location-->
         <scene sceneID="YRF-sL-D24">
             <objects>
-                <viewController id="QGc-Cn-K0O" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddLocation" id="QGc-Cn-K0O" customClass="AddLocation" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="C7b-cN-XQg">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

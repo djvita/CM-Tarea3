@@ -17,6 +17,7 @@
 		38170FC71B49A7130074D574 /* CM_Tarea3Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 38170FC61B49A7130074D574 /* CM_Tarea3Tests.m */; };
 		38170FD81B49A8F70074D574 /* cellMaps.m in Sources */ = {isa = PBXBuildFile; fileRef = 38170FD61B49A8F70074D574 /* cellMaps.m */; };
 		38170FD91B49A8F70074D574 /* cellMaps.xib in Resources */ = {isa = PBXBuildFile; fileRef = 38170FD71B49A8F70074D574 /* cellMaps.xib */; };
+		38170FDC1B49AF990074D574 /* AddLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 38170FDB1B49AF990074D574 /* AddLocation.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,8 @@
 		38170FD51B49A8F70074D574 /* cellMaps.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cellMaps.h; sourceTree = "<group>"; };
 		38170FD61B49A8F70074D574 /* cellMaps.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = cellMaps.m; sourceTree = "<group>"; };
 		38170FD71B49A8F70074D574 /* cellMaps.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = cellMaps.xib; sourceTree = "<group>"; };
+		38170FDA1B49AF990074D574 /* AddLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddLocation.h; sourceTree = "<group>"; };
+		38170FDB1B49AF990074D574 /* AddLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddLocation.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +143,8 @@
 			children = (
 				38170FB11B49A7130074D574 /* Start.h */,
 				38170FB21B49A7130074D574 /* Start.m */,
+				38170FDA1B49AF990074D574 /* AddLocation.h */,
+				38170FDB1B49AF990074D574 /* AddLocation.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -255,6 +260,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				38170FDC1B49AF990074D574 /* AddLocation.m in Sources */,
 				38170FB01B49A7130074D574 /* CM_Tarea3.xcdatamodeld in Sources */,
 				38170FAD1B49A7120074D574 /* AppDelegate.m in Sources */,
 				38170FB31B49A7130074D574 /* Start.m in Sources */,
