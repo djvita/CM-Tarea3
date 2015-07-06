@@ -10,4 +10,19 @@
 
 @interface Declarations : NSObject
 
+
+extern int miLocatiuonIndex;
+extern NSUserDefaults   *mUserDefaults;
+extern NSMutableArray   *maNames;
+extern NSMutableArray   *maDesc;
+extern NSMutableArray   *maLat;
+extern NSMutableArray   *maLong;
+
+
+
+extern NSString *sName;
+extern NSString *sDesc;
+extern NSString *sLat;
+extern NSString *sLong;
+
 @end

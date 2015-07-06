@@ -10,4 +10,17 @@
 
 @implementation Declarations
 
+int miLocatiuonIndex = 0;
+NSUserDefaults   *mUserDefaults;
+NSMutableArray   *maNames;
+NSMutableArray   *maDesc;
+NSMutableArray   *maLat;
+NSMutableArray   *maLong;
+
+
+NSString *sName;
+NSString *sDesc;
+NSString *sLat;
+NSString *sLong;
+
 @end

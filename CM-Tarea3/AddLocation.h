@@ -16,4 +16,6 @@
 
 - (IBAction)btnBackPressed:(id)sender;
 - (IBAction)btnSavePressed:(id)sender;
+- (IBAction)btnCurrentLocPressed:(id)sender;
+
 @end

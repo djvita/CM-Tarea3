@@ -1,21 +1,23 @@
 //
-//  AddLocation.m
+//  Details.m
 //  CM-Tarea3
 //
-//  Created by Elias Vltaliano Vidaurre Davila on 7/5/15.
+//  Created by vita on 7/6/15.
 //  Copyright (c) 2015 vita. All rights reserved.
 //
 
-#import "AddLocation.h"
+#import "Details.h"
+#import "Declarations.h"
 
-@interface AddLocation ()
+@interface Details ()
 
 @end
 
-@implementation AddLocation
+@implementation Details
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self initController];
     // Do any additional setup after loading the view.
 }
 
@@ -34,12 +36,15 @@
 }
 */
 
+- (void)initController {
+    self.lblName.text   =  maNames[miLocatiuonIndex];
+    self.lblDesc.text   =  maDesc[miLocatiuonIndex];
+    self.lblLat.text    =  maLat[miLocatiuonIndex];
+    self.lblLong.text   =  maLong[miLocatiuonIndex];
+    
+}
+
 - (IBAction)btnBackPressed:(id)sender {
-}
-
-- (IBAction)btnSavePressed:(id)sender {
-}
-
-- (IBAction)btnCurrentLocPressed:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 @end
