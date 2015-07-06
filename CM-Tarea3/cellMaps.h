@@ -9,5 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface cellMaps : UITableViewCell
+@property (strong, nonatomic) IBOutlet UILabel *lblName;
+@property (strong, nonatomic) IBOutlet UILabel *lblDesc;
+@property (strong, nonatomic) IBOutlet UILabel *lblLat;
+@property (strong, nonatomic) IBOutlet UILabel *lblLong;
 
 @end

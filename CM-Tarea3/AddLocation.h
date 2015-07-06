@@ -9,5 +9,11 @@
 #import <UIKit/UIKit.h>
 
 @interface AddLocation : UIViewController
+@property (strong, nonatomic) IBOutlet UITextField *txtFName;
+@property (strong, nonatomic) IBOutlet UITextField *txtFDesc;
+@property (strong, nonatomic) IBOutlet UITextField *txtFLat;
+@property (strong, nonatomic) IBOutlet UITextField *txtFLong;
 
+- (IBAction)btnBackPressed:(id)sender;
+- (IBAction)btnSavePressed:(id)sender;
 @end

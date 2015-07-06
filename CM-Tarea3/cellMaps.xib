@@ -43,6 +43,12 @@
                     </label>
                 </subviews>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="lblDesc" destination="0gq-Bk-tRe" id="p15-wp-Ayt"/>
+                <outlet property="lblLat" destination="k86-vp-FH9" id="SrQ-dm-4Zz"/>
+                <outlet property="lblLong" destination="cT6-cX-PVa" id="int-As-E3b"/>
+                <outlet property="lblName" destination="FWV-Lm-Xnr" id="9QI-js-OkH"/>
+            </connections>
             <point key="canvasLocation" x="301.5" y="367"/>
         </tableViewCell>
     </objects>
