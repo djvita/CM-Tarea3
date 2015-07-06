@@ -54,15 +54,19 @@
     [_txtFLat resignFirstResponder];
     [_txtFLong resignFirstResponder];
     [self dismissViewControllerAnimated:YES completion:nil];
+
+}
+
+- (IBAction)btnSavePressed:(id)sender {
+    [_txtFName resignFirstResponder];
+    [_txtFDesc resignFirstResponder];
+    [_txtFLat resignFirstResponder];
+    [_txtFLong resignFirstResponder];
     //populate to the externs
     [maNames addObject:self.txtFName.text];
     [maDesc addObject:self.txtFDesc.text];
     [maLat addObject:self.txtFLat.text];
     [maLong addObject:self.txtFLong.text];
-}
-
-- (IBAction)btnSavePressed:(id)sender {
-    
     
     [self dismissViewControllerAnimated:YES completion:nil];
     
