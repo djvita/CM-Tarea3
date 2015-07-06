@@ -18,6 +18,7 @@
 		38170FD81B49A8F70074D574 /* cellMaps.m in Sources */ = {isa = PBXBuildFile; fileRef = 38170FD61B49A8F70074D574 /* cellMaps.m */; };
 		38170FD91B49A8F70074D574 /* cellMaps.xib in Resources */ = {isa = PBXBuildFile; fileRef = 38170FD71B49A8F70074D574 /* cellMaps.xib */; };
 		38170FDC1B49AF990074D574 /* AddLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 38170FDB1B49AF990074D574 /* AddLocation.m */; };
+		38170FDF1B4A216E0074D574 /* Declarations.m in Sources */ = {isa = PBXBuildFile; fileRef = 38170FDE1B4A216E0074D574 /* Declarations.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +51,8 @@
 		38170FD71B49A8F70074D574 /* cellMaps.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = cellMaps.xib; sourceTree = "<group>"; };
 		38170FDA1B49AF990074D574 /* AddLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddLocation.h; sourceTree = "<group>"; };
 		38170FDB1B49AF990074D574 /* AddLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddLocation.m; sourceTree = "<group>"; };
+		38170FDD1B4A216E0074D574 /* Declarations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Declarations.h; sourceTree = "<group>"; };
+		38170FDE1B4A216E0074D574 /* Declarations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Declarations.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,6 +137,8 @@
 			children = (
 				38170FAB1B49A7120074D574 /* AppDelegate.h */,
 				38170FAC1B49A7120074D574 /* AppDelegate.m */,
+				38170FDD1B4A216E0074D574 /* Declarations.h */,
+				38170FDE1B4A216E0074D574 /* Declarations.m */,
 			);
 			name = Main;
 			sourceTree = "<group>";
@@ -263,6 +268,7 @@
 				38170FDC1B49AF990074D574 /* AddLocation.m in Sources */,
 				38170FB01B49A7130074D574 /* CM_Tarea3.xcdatamodeld in Sources */,
 				38170FAD1B49A7120074D574 /* AppDelegate.m in Sources */,
+				38170FDF1B4A216E0074D574 /* Declarations.m in Sources */,
 				38170FB31B49A7130074D574 /* Start.m in Sources */,
 				38170FD81B49A8F70074D574 /* cellMaps.m in Sources */,
 				38170FAA1B49A7120074D574 /* main.m in Sources */,
