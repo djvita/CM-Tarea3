@@ -21,7 +21,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initController];
+    
     // Do any additional setup after loading the view, typically from a nib.
+    _tabla.hidden = YES;
+    _view1.hidden = NO;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -131,5 +134,20 @@
     
     [self presentViewController:addLoc animated:YES completion:nil];
 
+}
+
+- (IBAction)changeSegment:(id)sender {
+    if(_segMaps.selectedSegmentIndex == 0)
+    {
+        _tabla.hidden = YES;
+        _view1.hidden = NO;
+    }
+    else if (_segMaps.selectedSegmentIndex == 1)
+    {
+        _tabla.hidden = NO;
+        _view1.hidden = YES;
+    }
+    
+    [_tabla reloadData];
 }
 @end

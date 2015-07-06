@@ -16,6 +16,7 @@
 
 - (IBAction)btnAddPressed:(id)sender;
 
+- (IBAction)changeSegment:(id)sender;
 
 
 @end
