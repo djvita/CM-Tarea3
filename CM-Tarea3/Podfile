@@ -1,0 +1,5 @@
+source 'https://github.com/CocoaPods/Specs.git'
+platform :ios, '8.1'
+pod 'GoogleMaps'
+pod 'Google/Analytics', '~> 1.0.0'
+xcodeproj '/Users/vita/Documents/iOS_projects_CM/CM-Tarea3/CM-Tarea3.xcodeproj'
