@@ -8,6 +8,13 @@
 
 #import "AddLocation.h"
 #import "Declarations.h"
+#import <CoreLocation/CoreLocation.h>
+@import GoogleMaps;
+
+//Localization
+float                   flatitude;
+float                   flongitude;
+
 @interface AddLocation ()
 
 @end
@@ -23,6 +30,13 @@
                                    action:@selector(dismissKeyboard)];
     
     [self.view addGestureRecognizer:tap];
+
+    //google maps
+    _locationManager = [[CLLocationManager alloc] init];
+    _locationManager.distanceFilter = kCLDistanceFilterNone;
+    _locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters; // 100 m
+    [_locationManager startUpdatingLocation];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -73,6 +87,11 @@
 }
 
 - (IBAction)btnCurrentLocPressed:(id)sender {
-    
+    flatitude = self.locationManager.location.coordinate.latitude;
+    flongitude = self.locationManager.location.coordinate.longitude;
+    NSString *sLatitude = [NSString stringWithFormat:@"%f", flatitude];
+    NSString *sLongitude= [NSString stringWithFormat:@"%f", flongitude];
+    _txtFLat.text = sLatitude;
+    _txtFLong.text = sLongitude;
 }
 @end

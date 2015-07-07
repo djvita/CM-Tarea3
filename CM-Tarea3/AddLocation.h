@@ -7,12 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreLocation/CoreLocation.h>
+@import GoogleMaps;
 
 @interface AddLocation : UIViewController
 @property (strong, nonatomic) IBOutlet UITextField *txtFName;
 @property (strong, nonatomic) IBOutlet UITextField *txtFDesc;
 @property (strong, nonatomic) IBOutlet UITextField *txtFLat;
 @property (strong, nonatomic) IBOutlet UITextField *txtFLong;
+
+@property (strong, nonatomic)   CLLocationManager   *locationManager;
 
 - (IBAction)btnBackPressed:(id)sender;
 - (IBAction)btnSavePressed:(id)sender;
