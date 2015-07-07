@@ -51,8 +51,8 @@ NSMutableArray          *maPlacesLng;
     self.locationManager.desiredAccuracy    = kCLLocationAccuracyBest;
     [self.locationManager  requestWhenInUseAuthorization];
     [self.locationManager startUpdatingLocation];
-    
-    
+    [self paintMap];
+    [self paintMarker];
     
     _tabla.hidden = YES;
     _view1.hidden = NO;
@@ -193,7 +193,7 @@ NSMutableArray          *maPlacesLng;
     [mapView removeFromSuperview];
     camera                      = [GMSCameraPosition cameraWithLatitude:mlatitude longitude:mlongitude zoom:14.0];
     mapView                     = [GMSMapView mapWithFrame:self.view1.bounds camera: camera];
-    mapView.frame               = CGRectMake(0, 60, self.view.frame.size.width, self.view.frame.size.height-60);
+    mapView.frame               = CGRectMake(0, 60, self.view1.frame.size.width, self.view1.frame.size.height-60);
     mapView.myLocationEnabled   = YES;
     
     [self.view1 addSubview: mapView];
