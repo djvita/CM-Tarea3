@@ -11,18 +11,49 @@
 #import "AddLocation.h"
 #import "cellMaps.h"
 #import "Details.h"
+#import <Google/Analytics.h>
+@import GoogleMaps;
+
+#define         nLocalizing     0
+#define         nLocalized      1
+
+//Localization
+float                   mlatitude;
+float                   mlongitude;
+static int              iLocalizeState = nLocalizing;
+
+NSMutableArray          *maPlacesTitle;
+NSMutableArray          *maPlacesSnippet;
+NSMutableArray          *maPlacesLat;
+NSMutableArray          *maPlacesLng;
 
 @interface Start ()
 
 @end
 
-@implementation Start
+
+@implementation Start{
+    GMSMapView          *mapView;
+    GMSMarker           *markerLocation;
+    GMSCameraPosition   *camera;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initController];
     
     // Do any additional setup after loading the view, typically from a nib.
+    
+    //Location
+    self.locationManager                    = [[CLLocationManager alloc] init];
+    self.locationManager.delegate           = self;
+    self.location                           = [[CLLocation alloc] init];
+    self.locationManager.desiredAccuracy    = kCLLocationAccuracyBest;
+    [self.locationManager  requestWhenInUseAuthorization];
+    [self.locationManager startUpdatingLocation];
+    
+    
+    
     _tabla.hidden = YES;
     _view1.hidden = NO;
 }
@@ -38,6 +69,10 @@
     [super viewDidAppear:animated];
     
     [self.tabla reloadData];
+    //google analytics
+    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
+    [tracker set:kGAIScreenName value:@"CM-Tarea3-Start"];
+    [tracker send:[[GAIDictionaryBuilder createScreenView] build]];
     
 }
 
@@ -94,7 +129,7 @@
 {
     return 64;
 }
-//-------------------------------------------------------------------------------
+//TABLE METHODS-------------------------------------------------------------------------------
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     //Initialize cells
@@ -150,4 +185,74 @@
     
     [_tabla reloadData];
 }
+
+/**********************************************************************************************/
+#pragma mark - Maps methods
+/**********************************************************************************************/
+- (void) paintMap {
+    [mapView removeFromSuperview];
+    camera                      = [GMSCameraPosition cameraWithLatitude:mlatitude longitude:mlongitude zoom:14.0];
+    mapView                     = [GMSMapView mapWithFrame:self.view1.bounds camera: camera];
+    mapView.frame               = CGRectMake(0, 60, self.view.frame.size.width, self.view.frame.size.height-60);
+    mapView.myLocationEnabled   = YES;
+    
+    [self.view1 addSubview: mapView];
+
+}
+//------------------------------------------------------------
+- (void) paintMarker {
+    GMSMarker *marker       = [[GMSMarker alloc] init];
+    marker.position         = camera.target;
+    marker.title            = @"UAG";
+    marker.snippet          = @"Clase de Maestría";
+    marker.appearAnimation  = kGMSMarkerAnimationPop;
+    marker.map = mapView;
+    
+    CLLocationCoordinate2D position;
+    NSLog(@"maPlacesTitle.count %d", (int)maNames.count);
+    for (int i = 0; i<maNames.count; i++)
+    {
+        CGFloat lat                     = (CGFloat)[maLat[i] floatValue];
+        CGFloat lng                     = (CGFloat)[maLong[i] floatValue];
+        NSLog(@"Marker lat %f, long %f", lat, lng);
+        position                        = CLLocationCoordinate2DMake(lat, lng);
+        markerLocation                  = [GMSMarker markerWithPosition:position];
+        markerLocation.icon             = [GMSMarker markerImageWithColor:[UIColor greenColor]];
+        markerLocation.title            = maNames[i];
+        markerLocation.snippet          = maDesc[i];
+        markerLocation.appearAnimation  = kGMSMarkerAnimationPop;
+        markerLocation.map              = mapView;
+    }
+}
+/**********************************************************************************************/
+#pragma mark - Localization
+/**********************************************************************************************/
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
+    self.location = locations.lastObject;
+    NSLog(@"didUpdateLocation!");
+    CLGeocoder * geoCoder = [[CLGeocoder alloc] init];
+    [geoCoder reverseGeocodeLocation:self.locationManager.location completionHandler:^(NSArray *placemarks, NSError *error) {
+        for (CLPlacemark *placemark in placemarks) {
+            NSString *addressName = [placemark name];
+            NSString *city = [placemark locality];
+            NSString *administrativeArea = [placemark administrativeArea];
+            NSString *country  = [placemark country];
+            NSString *countryCode = [placemark ISOcountryCode];
+            NSLog(@"name is %@ and locality is %@ and administrative area is %@ and country is %@ and country code %@", addressName, city, administrativeArea, country, countryCode);
+
+        }
+        
+        mlatitude = self.locationManager.location.coordinate.latitude;
+        mlongitude = self.locationManager.location.coordinate.longitude;
+        NSLog(@"mlatitude = %f", mlatitude);
+        NSLog(@"mlongitude = %f", mlongitude);
+        if (iLocalizeState == nLocalizing) {
+            [self paintMap];
+            [self paintMarker];
+            iLocalizeState = nLocalized;
+        }
+    }];
+    
+}
+
 @end

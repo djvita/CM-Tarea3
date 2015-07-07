@@ -7,12 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreLocation/CoreLocation.h>
+@import GoogleMaps;
 
-@interface Start : UIViewController<UITableViewDataSource, UITableViewDelegate>
+@interface Start : UIViewController<UITableViewDataSource, UITableViewDelegate, CLLocationManagerDelegate>
 
 @property (strong, nonatomic) IBOutlet UITableView *tabla;
 @property (strong, nonatomic) IBOutlet UIView *view1;
 @property (strong, nonatomic) IBOutlet UISegmentedControl *segMaps;
+
+@property (strong, nonatomic)   CLLocationManager   *locationManager;
+@property (strong, nonatomic)   CLLocation          *location;
+
+//@property (strong, nonatomic) IBOutlet GMSMapView *mapView_;
 
 - (IBAction)btnAddPressed:(id)sender;
 

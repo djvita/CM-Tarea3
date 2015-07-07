@@ -19,6 +19,7 @@
 		38170FD91B49A8F70074D574 /* cellMaps.xib in Resources */ = {isa = PBXBuildFile; fileRef = 38170FD71B49A8F70074D574 /* cellMaps.xib */; };
 		38170FDC1B49AF990074D574 /* AddLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 38170FDB1B49AF990074D574 /* AddLocation.m */; };
 		38170FDF1B4A216E0074D574 /* Declarations.m in Sources */ = {isa = PBXBuildFile; fileRef = 38170FDE1B4A216E0074D574 /* Declarations.m */; };
+		584973641B4C2D41006E4483 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 584973631B4C2D41006E4483 /* GoogleService-Info.plist */; };
 		5850AA131B4AC7C9003F8E1D /* Details.m in Sources */ = {isa = PBXBuildFile; fileRef = 5850AA121B4AC7C9003F8E1D /* Details.m */; };
 		5855130D1B4B1A9A00EF06FB /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 5855130C1B4B1A9A00EF06FB /* Podfile */; };
 		700AA0E86DFD9119DA9DE666 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BD555717B210A53FF29013F6 /* libPods.a */; };
@@ -57,6 +58,7 @@
 		38170FDD1B4A216E0074D574 /* Declarations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Declarations.h; sourceTree = "<group>"; };
 		38170FDE1B4A216E0074D574 /* Declarations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Declarations.m; sourceTree = "<group>"; };
 		4AA8F6850E555DA2373D42DE /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "CM-Tarea3/Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		584973631B4C2D41006E4483 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5850AA111B4AC7C9003F8E1D /* Details.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Details.h; sourceTree = "<group>"; };
 		5850AA121B4AC7C9003F8E1D /* Details.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Details.m; sourceTree = "<group>"; };
 		5855130C1B4B1A9A00EF06FB /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
@@ -121,6 +123,7 @@
 		38170FA71B49A7120074D574 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				584973631B4C2D41006E4483 /* GoogleService-Info.plist */,
 				38170FA81B49A7120074D574 /* Info.plist */,
 				38170FA91B49A7120074D574 /* main.m */,
 				5855130C1B4B1A9A00EF06FB /* Podfile */,
@@ -283,6 +286,7 @@
 				38170FBB1B49A7130074D574 /* LaunchScreen.xib in Resources */,
 				38170FD91B49A8F70074D574 /* cellMaps.xib in Resources */,
 				38170FB81B49A7130074D574 /* Images.xcassets in Resources */,
+				584973641B4C2D41006E4483 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

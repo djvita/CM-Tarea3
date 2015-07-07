@@ -23,20 +23,6 @@
                                     <action selector="btnAddPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="won-mr-vC0"/>
                                 </connections>
                             </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="GEP-7y-m0o">
-                                <rect key="frame" x="16" y="107" width="298" height="433"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <view key="tableFooterView" contentMode="scaleToFill" id="7d1-Td-muF">
-                                    <rect key="frame" x="0.0" y="0.0" width="298" height="44"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </view>
-                                <connections>
-                                    <outlet property="dataSource" destination="vXZ-lx-hvc" id="ObL-3H-oPx"/>
-                                    <outlet property="delegate" destination="vXZ-lx-hvc" id="EFU-JE-h76"/>
-                                </connections>
-                            </tableView>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="FvZ-gz-Ipr">
                                 <rect key="frame" x="29" y="31" width="123" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -48,6 +34,20 @@
                                     <action selector="changeSegment:" destination="vXZ-lx-hvc" eventType="valueChanged" id="XOr-3B-8sn"/>
                                 </connections>
                             </segmentedControl>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="GEP-7y-m0o">
+                                <rect key="frame" x="16" y="107" width="298" height="433"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="vXZ-lx-hvc" id="ObL-3H-oPx"/>
+                                    <outlet property="delegate" destination="vXZ-lx-hvc" id="EFU-JE-h76"/>
+                                </connections>
+                            </tableView>
+                            <view contentMode="scaleToFill" id="7d1-Td-muF">
+                                <rect key="frame" x="16" y="95" width="293" height="453"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
