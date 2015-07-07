@@ -32,10 +32,10 @@ float                   flongitude;
     [self.view addGestureRecognizer:tap];
 
     //google maps
-    _locationManager = [[CLLocationManager alloc] init];
-    _locationManager.distanceFilter = kCLDistanceFilterNone;
-    _locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters; // 100 m
-    [_locationManager startUpdatingLocation];
+    self.locationManager = [[CLLocationManager alloc] init];
+    self.locationManager.distanceFilter = kCLDistanceFilterNone;
+    self.locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters; // 100 m
+    [self.locationManager startUpdatingLocation];
     
 }
 
@@ -89,8 +89,10 @@ float                   flongitude;
 - (IBAction)btnCurrentLocPressed:(id)sender {
     flatitude = self.locationManager.location.coordinate.latitude;
     flongitude = self.locationManager.location.coordinate.longitude;
-    NSString *sLatitude = [NSString stringWithFormat:@"%f", flatitude];
-    NSString *sLongitude= [NSString stringWithFormat:@"%f", flongitude];
+    NSLog(@"flatitude = %f", flatitude);
+    NSLog(@"flongitude = %f", flongitude);
+    NSString *sLatitude = [NSString stringWithFormat:@"%1.6f", flatitude];
+    NSString *sLongitude= [NSString stringWithFormat:@"%1.6f", flongitude];
     _txtFLat.text = sLatitude;
     _txtFLong.text = sLongitude;
 }
