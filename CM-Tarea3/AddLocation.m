@@ -32,6 +32,7 @@ float                   flongitude;
     [self.view addGestureRecognizer:tap];
 
     //google maps
+    
     self.locationManager = [[CLLocationManager alloc] init];
     self.locationManager.distanceFilter = kCLDistanceFilterNone;
     self.locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters; // 100 m

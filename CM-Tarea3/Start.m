@@ -22,11 +22,6 @@ float                   mlatitude;
 float                   mlongitude;
 static int              iLocalizeState = nLocalizing;
 
-NSMutableArray          *maPlacesTitle;
-NSMutableArray          *maPlacesSnippet;
-NSMutableArray          *maPlacesLat;
-NSMutableArray          *maPlacesLng;
-
 @interface Start ()
 
 @end
@@ -40,22 +35,28 @@ NSMutableArray          *maPlacesLng;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self initController];
-    
     // Do any additional setup after loading the view, typically from a nib.
     
     //Location
+    
     self.locationManager                    = [[CLLocationManager alloc] init];
     self.locationManager.delegate           = self;
     self.location                           = [[CLLocation alloc] init];
     self.locationManager.desiredAccuracy    = kCLLocationAccuracyBest;
     [self.locationManager  requestWhenInUseAuthorization];
     [self.locationManager startUpdatingLocation];
+
     [self paintMap];
+    
+    [self initController];
+    
     [self paintMarker];
+
+    //[self locationManager];
     
     _tabla.hidden = YES;
     _view1.hidden = NO;
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -65,8 +66,8 @@ NSMutableArray          *maPlacesLng;
 
 -(void)viewWillAppear:(BOOL)animated // new
 {
-    NSLog(@"viewDidAppear");
-    [super viewDidAppear:animated];
+    
+    [super viewWillAppear:animated];
     
     [self.tabla reloadData];
     //google analytics
@@ -174,13 +175,19 @@ NSMutableArray          *maPlacesLng;
 - (IBAction)changeSegment:(id)sender {
     if(_segMaps.selectedSegmentIndex == 0)
     {
+        // show map reload table to paint new marker
         _tabla.hidden = YES;
         _view1.hidden = NO;
+        [self.tabla reloadData];
+        [self paintMap];
+        [self paintMarker];
     }
     else if (_segMaps.selectedSegmentIndex == 1)
     {
+        // show list
         _tabla.hidden = NO;
         _view1.hidden = YES;
+        [self.tabla reloadData];
     }
     
     [_tabla reloadData];
@@ -191,7 +198,7 @@ NSMutableArray          *maPlacesLng;
 /**********************************************************************************************/
 - (void) paintMap {
     [mapView removeFromSuperview];
-    camera                      = [GMSCameraPosition cameraWithLatitude:mlatitude longitude:mlongitude zoom:14.0];
+    camera                      = [GMSCameraPosition cameraWithLatitude:mlatitude longitude:mlongitude zoom:10.0];
     mapView                     = [GMSMapView mapWithFrame:self.view1.bounds camera: camera];
     mapView.frame               = CGRectMake(0, 60, self.view1.frame.size.width, self.view1.frame.size.height-60);
     mapView.myLocationEnabled   = YES;
@@ -201,10 +208,11 @@ NSMutableArray          *maPlacesLng;
 }
 //------------------------------------------------------------
 - (void) paintMarker {
+    [self.tabla reloadData];
     GMSMarker *marker       = [[GMSMarker alloc] init];
     marker.position         = camera.target;
-    marker.title            = @"UAG";
-    marker.snippet          = @"Clase de Maestría";
+    marker.title            = @"Ahora";
+    marker.snippet          = @"Estas Aqui";
     marker.appearAnimation  = kGMSMarkerAnimationPop;
     marker.map = mapView;
     
@@ -217,7 +225,7 @@ NSMutableArray          *maPlacesLng;
         NSLog(@"Marker lat %f, long %f", lat, lng);
         position                        = CLLocationCoordinate2DMake(lat, lng);
         markerLocation                  = [GMSMarker markerWithPosition:position];
-        markerLocation.icon             = [GMSMarker markerImageWithColor:[UIColor greenColor]];
+        markerLocation.icon             = [GMSMarker markerImageWithColor:[UIColor blueColor]];
         markerLocation.title            = maNames[i];
         markerLocation.snippet          = maDesc[i];
         markerLocation.appearAnimation  = kGMSMarkerAnimationPop;
@@ -238,7 +246,7 @@ NSMutableArray          *maPlacesLng;
             NSString *administrativeArea = [placemark administrativeArea];
             NSString *country  = [placemark country];
             NSString *countryCode = [placemark ISOcountryCode];
-            NSLog(@"name is %@ and locality is %@ and administrative area is %@ and country is %@ and country code %@", addressName, city, administrativeArea, country, countryCode);
+            //NSLog(@"name is %@ and locality is %@ and administrative area is %@ and country is %@ and country code %@", addressName, city, administrativeArea, country, countryCode);
 
         }
         
@@ -254,5 +262,6 @@ NSMutableArray          *maPlacesLng;
     }];
     
 }
+
 
 @end
