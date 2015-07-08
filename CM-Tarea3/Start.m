@@ -78,38 +78,89 @@ static int              iLocalizeState = nLocalizing;
 }
 
 -(void)initController {
-    maNames = [[NSMutableArray alloc] initWithObjects:
-               @"Plaza Andares",
-               @"Plaza Patria",
-               @"Gran Plaza",
-               @"Plaza del Sol",
-               nil
-               ];
+    //save the NSArray to disk to reuse
+    //Creating a file path under iOS:
+    //Search for the app's documents directory (copy+paste from Documentation)
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    // Create the full file path by appending the desired file name
     
-    maDesc = [[NSMutableArray alloc] initWithObjects:
-              @"Mas Exclusiva",
-              @"Mas Economica",
-              @"Mas Grande",
-              @"Primera",
-              nil
-              ];
     
-    maLat = [[NSMutableArray alloc] initWithObjects:
-             @"20.7101184",
-             @"20.7123263",
-             @"20.6736248",
-             @"20.6493428",
-             nil
-             ];
+    //maNames
+    NSString *arrayFilemaNames = [documentsDirectory stringByAppendingPathComponent:@"maNames.dat"];
+    maNames =  [[NSMutableArray alloc] initWithContentsOfFile: arrayFilemaNames];
+    if(maNames == nil)
+    {
+        //Array file didn't exist... create a new one
+        maNames = [[NSMutableArray alloc] initWithCapacity:20];
+        
+        //Fill with default values
+        maNames = [[NSMutableArray alloc] initWithObjects:
+                   @"Plaza Andares",
+                   @"Plaza Patria",
+                   @"Gran Plaza",
+                   @"Plaza del Sol",
+                   nil
+                   ];
+    }
+    else{
+        maNames = [NSMutableArray arrayWithContentsOfFile:arrayFilemaNames];
+    }
+    [maNames writeToFile:arrayFilemaNames atomically:YES];
     
-    maLong = [[NSMutableArray alloc] initWithObjects:
-              @"-103.4127531",
-              @"-103.3784522",
-              @"-103.4048358",
-              @"-103.4023513",
-              nil
-              ];
+    //maDesc
+    NSString *arrayFilemaDesc = [documentsDirectory stringByAppendingPathComponent:@"maDesc.dat"];
+    maDesc =  [[NSMutableArray alloc] initWithContentsOfFile: arrayFilemaDesc];
+    if (maDesc == nil) {
+        maDesc = [[NSMutableArray alloc] initWithCapacity:20];
+        maDesc = [[NSMutableArray alloc] initWithObjects:
+                  @"Mas Exclusiva",
+                  @"Mas Economica",
+                  @"Mas Grande",
+                  @"Primera",
+                  nil
+                  ];
+    }
+    else{
+        maDesc = [NSMutableArray arrayWithContentsOfFile:arrayFilemaDesc];
+    }
+    [maDesc writeToFile:arrayFilemaDesc atomically:YES];
     
+    //maLat
+    NSString *arrayFilemaLat = [documentsDirectory stringByAppendingPathComponent:@"maLat.dat"];
+    maLat =  [[NSMutableArray alloc] initWithContentsOfFile: arrayFilemaLat];
+    if (maLat == nil) {
+        maLat = [[NSMutableArray alloc] initWithCapacity:20];
+        maLat = [[NSMutableArray alloc] initWithObjects:
+                 @"20.7101184",
+                 @"20.7123263",
+                 @"20.6736248",
+                 @"20.6493428",
+                 nil
+                 ];
+    }
+    else{
+        maLat = [NSMutableArray arrayWithContentsOfFile:arrayFilemaLat];
+    }
+    [maLat writeToFile:arrayFilemaLat atomically:YES];
+    
+    //maLong
+    NSString *arrayFilemaLong = [documentsDirectory stringByAppendingPathComponent:@"maLong.dat"];
+    maLong =  [[NSMutableArray alloc] initWithContentsOfFile: arrayFilemaLong];
+    if (maLong == nil) {
+        maLong = [[NSMutableArray alloc] initWithCapacity:20];
+        maLong = [[NSMutableArray alloc] initWithObjects:
+                  @"-103.4127531",
+                  @"-103.3784522",
+                  @"-103.4048358",
+                  @"-103.4023513",
+                  nil
+                  ];
+    }
+    else{
+        maLong = [NSMutableArray arrayWithContentsOfFile:arrayFilemaLong];
+    }
+    [maLong writeToFile:arrayFilemaLong atomically:YES];
 
 }
 
@@ -240,20 +291,11 @@ static int              iLocalizeState = nLocalizing;
     NSLog(@"didUpdateLocation!");
     CLGeocoder * geoCoder = [[CLGeocoder alloc] init];
     [geoCoder reverseGeocodeLocation:self.locationManager.location completionHandler:^(NSArray *placemarks, NSError *error) {
-        for (CLPlacemark *placemark in placemarks) {
-            NSString *addressName = [placemark name];
-            NSString *city = [placemark locality];
-            NSString *administrativeArea = [placemark administrativeArea];
-            NSString *country  = [placemark country];
-            NSString *countryCode = [placemark ISOcountryCode];
-            //NSLog(@"name is %@ and locality is %@ and administrative area is %@ and country is %@ and country code %@", addressName, city, administrativeArea, country, countryCode);
-
-        }
         
         mlatitude = self.locationManager.location.coordinate.latitude;
         mlongitude = self.locationManager.location.coordinate.longitude;
-        NSLog(@"mlatitude = %f", mlatitude);
-        NSLog(@"mlongitude = %f", mlongitude);
+        //NSLog(@"mlatitude = %f", mlatitude);
+        //NSLog(@"mlongitude = %f", mlongitude);
         if (iLocalizeState == nLocalizing) {
             [self paintMap];
             [self paintMarker];

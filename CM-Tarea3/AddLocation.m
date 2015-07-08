@@ -83,6 +83,33 @@ float                   flongitude;
     [maLat addObject:self.txtFLat.text];
     [maLong addObject:self.txtFLong.text];
     
+    //save the NSArray to disk to reuse
+    //Creating a file path under iOS:
+    //Search for the app's documents directory (copy+paste from Documentation)
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    // Create the full file path by appending the desired file name
+    
+    
+    NSString *arrayFilemaNames = [documentsDirectory stringByAppendingPathComponent:@"maNames.dat"];
+    //NSMutableArray *maNames = [[NSMutableArray alloc] initWithContentsOfFile: arrayFilemaNames];
+    [maNames writeToFile:arrayFilemaNames atomically:YES];
+    
+
+    NSString *arrayFilemaDesc = [documentsDirectory stringByAppendingPathComponent:@"maDesc.dat"];
+    //NSMutableArray *yourArray = [[NSMutableArray alloc] initWithContentsOfFile: yourArrayFileName];
+    [maDesc writeToFile:arrayFilemaDesc atomically:YES];
+    
+
+    NSString *arrayFilemaLat = [documentsDirectory stringByAppendingPathComponent:@"maLat.dat"];
+    //NSMutableArray *yourArray = [[NSMutableArray alloc] initWithContentsOfFile: yourArrayFileName];
+    [maLat writeToFile:arrayFilemaLat atomically:YES];
+    
+    
+    NSString *arrayFilemaLong = [documentsDirectory stringByAppendingPathComponent:@"maLong.dat"];
+    //NSMutableArray *yourArray = [[NSMutableArray alloc] initWithContentsOfFile: yourArrayFileName];
+    [maLong writeToFile:arrayFilemaLong atomically:YES];
+
     [self dismissViewControllerAnimated:YES completion:nil];
     
 }
@@ -97,4 +124,7 @@ float                   flongitude;
     _txtFLat.text = sLatitude;
     _txtFLong.text = sLongitude;
 }
+
+
+
 @end
